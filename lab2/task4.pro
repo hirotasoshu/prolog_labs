@@ -17,11 +17,13 @@ contains(tr(X, _, _), X).
 contains(tr(V, L, _), X) :-
     integer(X),
     X < V,
+    !,
     contains(L, X).
 
 contains(tr(V, _, R), X) :-
     integer(X),
     X > V,
+    !,
     contains(R, X).
 
 contains(tr(_, L, _), X) :-

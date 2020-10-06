@@ -12,7 +12,7 @@ checkAtomsEq(A1, A2) :-
 checkListOfAtomsEq([], []).
 checkListOfAtomsEq([H1|T1], [H2|T2]) :-
     checkAtomsEq(H1, H2),
-    checkListAtomsEq(T1, T2).
+    checkListOfAtomsEq(T1, T2).
     
 
 

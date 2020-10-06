@@ -15,12 +15,13 @@ is_prime_(N, CURR_NUM) :-
         is_prime_(N, NEXT_NUM)
     ).
 
-filterPrimeNumbers(Lst, FiltLst) :- filterPrimeNumbers_(Lst, FiltLst, []).
-filterPrimeNumbers_([], FiltLst, FiltLst).
+filterPrimeNumbers([], []).
 
-filterPrimeNumbers_([H|T], FiltLst, Curr) :-
-    (   is_prime(H),
-        append(Curr, [H], Res)
-        -> filterPrimeNumbers_(T, FiltLst, Res)
-    ;   filterPrimeNumbers_(T, FiltLst, Curr)
-    ).
+filterPrimeNumbers([H|T], [H|Filtered]) :-
+    is_prime(H),
+    !,
+    filterPrimeNumbers(T, Filtered).
+filterPrimeNumbers([_|T], Filtered) :-
+    filterPrimeNumbers(T, Filtered).
+
+    

@@ -3,7 +3,6 @@ numlst_(N, Lst, Res) :-
     N > 0,
     N1 is N // 10,
     D is N mod 10,
-    !,
     numlst_(N1, Lst, [D|Res]).
 
 numlst_2(K, N, Lst) :-
