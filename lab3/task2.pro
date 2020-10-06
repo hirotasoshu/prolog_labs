@@ -16,7 +16,13 @@ is_prime_(N, CURR_NUM) :-
     ).
 
 filterPrimeNumbers([], []).
-
+%костыль, чтобы нормально работало в режиме проверки
+filterPrimeNumbers(Lst, Filtered) :-
+    nonvar(Filtered),
+    !,
+    filterPrimeNumbers(Lst, X),
+    X = Filtered.
+%сам "фильтр" листа
 filterPrimeNumbers([H|T], [H|Filtered]) :-
     is_prime(H),
     !,
